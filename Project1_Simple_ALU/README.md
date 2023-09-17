@@ -65,8 +65,6 @@ My ALU would run 2 operations (ADD & SUBTRACT) together. The operation result wo
 
 **Note:** The reason why I have created these files is that it would be much easier to create a hierarchy for the project, making it more readable and easier for future development. I do not know if the future (for example, checkpoint 2) needs to implement more commands in the ALU, so I make sure it could be future updated. The design of this ALU may not be the best solution, as the subtraction and addition operation could be implemented using only 1 block. The isNotEqual and isLessThan is very easy to achieve, thus I have added these function into the project even if it is not required for checkpoint 1.
 
----
-
 ## 2. Add Operation
 
 The adder I used is the hierarchical CLA. The first level is the 8-bit CLA adder. The second level is the 4 8-bit CLA adder block. The look-ahead ability for each bit carried out requires the previous bits 'propagation' and 'generation'. The propagate function (p) is the OR of two input bits and the generate function (G) is the AND of two input bits. For each carry-out in each bit, it is calculated as:
