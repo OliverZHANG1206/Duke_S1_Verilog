@@ -2,7 +2,6 @@
 
 **NetID:** yz845   **Name:** Yunfan Zhang   **Course:** ECE550D   **Date:** 09/17/2023
 
-
 ## Content
 
 1. ALU Structure Overview
@@ -20,7 +19,6 @@
 7. Decoder
 
 8. Mux
-
 
 ## 1. ALU Structure Overview
 
