@@ -87,7 +87,7 @@ s_i=A_i \oplus B_i \oplus c_{i-1}
 $$
 To build the second level CLA, it requires the final P and G for each 8-bit CLA, which are:
 $$
-p_7p_6p_5p_4p_3p_2p_1p_0 \\ G=g_7+p_7g_6+p_7p_6g_5+...+p_7p_6p_5p_4p_3p_2p_1c_0
+P=p_7p_6p_5p_4p_3p_2p_1p_0 \\ G=g_7+p_7g_6+p_7p_6g_5+...+p_7p_6p_5p_4p_3p_2p_1c_0
 $$
 Then, each 8-bit CLA block would have a second-level carry-out as:
 
