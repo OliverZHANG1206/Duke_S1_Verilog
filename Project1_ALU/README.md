@@ -2,8 +2,6 @@
 
 **NetID:** yz845   **Name:** Yunfan Zhang   **Course:** ECE550D   **Date:** 09/25/2023
 
----
-
 ## Content
 
 1. ALU Structure Overview
@@ -22,6 +20,7 @@
 
 8. Mux
 
+<<<<<<< HEAD:Project1_ALU/README.md
 9. Bitwise And Operation
 
 10. Bitwise Or Operation
@@ -32,6 +31,8 @@
 
 ---
 
+=======
+>>>>>>> a4510a02a5798a8e42b19c67bba22620d9efc038:Project1_Simple_ALU/README.md
 ## 1. ALU Structure Overview
 
 **a) The overall files in this project checkpoint 1 include:**
@@ -76,8 +77,6 @@
 My ALU would run 6 operations (ADD, SUBSTRACT, SRA, SLL, Bitwise AND, Bitwise OR) together. The operation result would be in the wire 'data_add_result' and 'data_sub_result', 'data_sra_result', 'data_sll_result', 'data_and_result', and 'data_or_result', respectively. A decoder was used to transfer the command code into the hot-line coding format and then this would be used in mux to select which result needs to be output. Mux would also be used in overflow output.
 
 **Note:** The reason why I have created these files is that it would be much easier to create a hierarchy for the project, making it more readable and easier for future development.  The design of this ALU may not be the best solution, as the subtraction and addition operation could be implemented using only 1 block. 
-
----
 
 ## 2. Add Operation
 
