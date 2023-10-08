@@ -17,7 +17,9 @@ module decoder(in, out);
 	// **Decode each hot-line**
 	and (out[0], nin[4], nin[3], nin[2], nin[1], nin[0]); // ADD Command
 	and (out[1], nin[4], nin[3], nin[2], nin[1],  in[0]); // SUB Command
-	
-	assign out[5:2] = 4'b0000; //... for future implementation
+	and (out[2], nin[4], nin[3], nin[2],  in[1], nin[0]); // Bitwise AND
+	and (out[3], nin[4], nin[3], nin[2],  in[1],  in[0]); // Bitwise OR
+	and (out[4], nin[4], nin[3],  in[2], nin[1], nin[0]); // SLL
+	and (out[5], nin[4], nin[3],  in[2], nin[1],  in[0]); // SDA
 	
 endmodule
