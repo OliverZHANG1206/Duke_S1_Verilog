@@ -79,7 +79,7 @@ My ALU would run 6 operations (ADD, SUBSTRACT, SRA, SLL, Bitwise AND, Bitwise OR
 
 The adder I used is the hierarchical CLA. The first level is the 8-bit CLA adder. The second level is the 4 8-bit CLA adder block. The look-ahead ability for each bit carried out requires the previous bits 'propagation' and 'generation'. The propagate function (p) is the OR of two input bits and the generate function (G) is the AND of two input bits. For each carry-out in each bit, it is calculated as:
 $$
-c_1=g_0+p_0c_0\\c_2=g_1+p_1g_0+p_1p_0c_0\\c_3=g_2+p_2g_1+p_2p_1g_0+p_2p_1p_0c_0\\c_4=g_3+p_3g_2+p_3p_2g_1+p_3p_2p_1g_0+p_3p_2p_1p_0c_0\\...
+c_1=g_0+p_0c_0 \\ c_2=g_1+p_1g_0+p_1p_0c_0 \\ c_3=g_2+p_2g_1+p_2p_1g_0+p_2p_1p_0c_0 \\ c_4=g_3+p_3g_2+p_3p_2g_1+p_3p_2p_1g_0+p_3p_2p_1p_0c_0 \\...
 $$
 The SUM for each bit is still XOR for input 2 bit and the previous carry-out bit:
 $$
@@ -87,12 +87,12 @@ s_i=A_i \oplus B_i \oplus c_{i-1}
 $$
 To build the second level CLA, it requires the final P and G for each 8-bit CLA, which are:
 $$
-p_7p_6p_5p_4p_3p_2p_1p_0\\G=g_7+p_7g_6+p_7p_6g_5+...+p_7p_6p_5p_4p_3p_2p_1c_0
+p_7p_6p_5p_4p_3p_2p_1p_0 \\ G=g_7+p_7g_6+p_7p_6g_5+...+p_7p_6p_5p_4p_3p_2p_1c_0
 $$
 Then, each 8-bit CLA block would have a second-level carry-out as:
 
 $$
-c_8=G_0+P_0c_0\\c_{16}=G_1+P_1G_0+P_1P_0c_0\\c_{24}=G_2+P_2G_1+P_2P_1G_0+P_2P_1P_0c_0\\c_{32}=G_3+P_3G_2+P_3P_2G_1+P_3P_2P_1G_0+P_4P_3P_2P_1c_0
+c_8=G_0+P_0c_0 \\ c_{16}=G_1+P_1G_0+P_1P_0c_0 \\ c_{24}=G_2+P_2G_1+P_2P_1G_0+P_2P_1P_0c_0 \\ c_{32}=G_3+P_3G_2+P_3P_2G_1+P_3P_2P_1G_0+P_4P_3P_2P_1c_0
 $$
 The result is directly output from 4 8-bit CLA blocks. The overall gate-time delay would be approximately 8 gates delay, which is much more faster than 32 gates delay of a RCA design.
 
