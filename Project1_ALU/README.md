@@ -20,7 +20,6 @@
 
 8. Mux
 
-<<<<<<< HEAD:Project1_ALU/README.md
 9. Bitwise And Operation
 
 10. Bitwise Or Operation
@@ -31,8 +30,6 @@
 
 ---
 
-=======
->>>>>>> a4510a02a5798a8e42b19c67bba22620d9efc038:Project1_Simple_ALU/README.md
 ## 1. ALU Structure Overview
 
 **a) The overall files in this project checkpoint 1 include:**
