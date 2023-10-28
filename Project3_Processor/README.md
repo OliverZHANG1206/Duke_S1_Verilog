@@ -100,7 +100,7 @@ output [4:0] ALUopctrl; // ALU operation code
 
 The whole processor is shown like this:
 
-![图片](./Pic/simple-skeleton.png)
+![图片](./Pic/Simple-Skeleton.png)
 
 The mux at the target register is for sw operation, while the mux at the destination register is for overflow cases. The mux at the ALU operand B is for immediate instruction; the overflow would also control the data selection for ALU or 1, 2, and 3. The mux at the write data port in regfile is for lw operation.
 
