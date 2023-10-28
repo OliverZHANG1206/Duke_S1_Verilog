@@ -75,6 +75,8 @@ The timing detail is shown in the following picture:
 
 ![图片](https://github.com/OliverZHANG1206/Duke_S1_Verilog/blob/c3dc6ac00ce9ac9dd28155b813097e89708cc1df/Project3_Processor/Pic/clock_config.png)
 
+https://github.com/OliverZHANG1206/Duke_S1_Verilog/blob/c3dc6ac00ce9ac9dd28155b813097e89708cc1df/Project3_Processor/Pic/clock_config.png
+
 ```Verilog
 clk_div4 pc_clk  (clock, reset, processor_clock);
 assign regfile_clock = processor_clock;
@@ -101,6 +103,8 @@ output [4:0] ALUopctrl; // ALU operation code
 The whole processor is shown like this:
 
 ![图片](https://github.com/OliverZHANG1206/Duke_S1_Verilog/blob/c3dc6ac00ce9ac9dd28155b813097e89708cc1df/Project3_Processor/Pic/Simple_Skeleton.png)
+
+https://github.com/OliverZHANG1206/Duke_S1_Verilog/blob/9c2e74ed156a521737117c1f4205f09add8010de/Project3_Processor/Pic/Simple_Skeleton.png
 
 The mux at the target register is for sw operation, while the mux at the destination register is for overflow cases. The mux at the ALU operand B is for immediate instruction; the overflow would also control the data selection for ALU or 1, 2, and 3. The mux at the write data port in regfile is for lw operation.
 
