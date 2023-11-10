@@ -26,7 +26,7 @@ module ctrl_unit(opcode, ALUopcode, overflow, Rwe, Rtar, Rwd, ALUinB, ALUopctrl,
 	// Jump function
 	assign JOP      = (~opcode[4]) & (~opcode[3]) & (~opcode[2]) & (~opcode[1]) & ( opcode[0]); // j   00001
 	assign JrOP     = (~opcode[4]) & (~opcode[3]) & ( opcode[2]) & (~opcode[1]) & (~opcode[0]); // jr  00100
-	assign JalOP    = (~opcode[4]) & (~opcode[3]) & (~opcode[2]) & (~opcode[1]) & (~opcode[0]); // jal 00011
+	assign JalOP    = (~opcode[4]) & (~opcode[3]) & (~opcode[2]) & ( opcode[1]) & ( opcode[0]); // jal 00011
 	
 	// Binary function
 	assign BneOP    = (~opcode[4]) & (~opcode[3]) & (~opcode[2]) & ( opcode[1]) & (~opcode[0]); // bne 00010
@@ -35,11 +35,11 @@ module ctrl_unit(opcode, ALUopcode, overflow, Rwe, Rtar, Rwd, ALUinB, ALUopctrl,
 	assign SetxOP   = ( opcode[4]) & (~opcode[3]) & ( opcode[2]) & (~opcode[1]) & ( opcode[0]); // setx(not in MIPS) 10101
 	
 	// Output control line
-	assign Rwe    = arithOP | arithiOP | lwOP;  // write enable
-	assign Rtar   = swOP;                       // destination - not add JR function
-	assign Rwd    = lwOP;                       // write data (ALU or Dmem)
-	assign DMwe   = swOP;                       // Dmemory write enable
-	assign ALUinB = arithiOP | lwOP | swOP;     // ALU B port input
+	assign Rwe    = arithOP | arithiOP | lwOP | JalOP | SetxOP;  // write enable
+	assign Rtar   = swOP | JrOP | BltOP | BneOP;                 // destination
+	assign Rwd    = lwOP;                                        // write data (ALU or Dmem)
+	assign DMwe   = swOP;                                        // Dmemory write enable
+	assign ALUinB = arithiOP | lwOP | swOP;                      // ALU B port input
 	
 	// ALU operation code control
 	assign addOP  = arithOP  & (~ALUopcode[4]) & (~ALUopcode[3]) & (~ALUopcode[2]) & (~ALUopcode[1]) & (~ALUopcode[0]);
