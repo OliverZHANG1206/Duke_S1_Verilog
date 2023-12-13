@@ -1,2 +1,0 @@
-Info (10281): Verilog HDL Declaration information at skeleton.v(25): object "VGA_SYNC" differs only in case from object "vga_sync" in the same scope File: E:/Duke_Study/Semester_1/ECE550D-Fundemental Computer System and Engineering/Project/Project4/skeleton.v Line: 25
-Warning (10268): Verilog HDL information at ps2_interface.v(49): always construct contains both blocking and non-blocking assignments File: E:/Duke_Study/Semester_1/ECE550D-Fundemental Computer System and Engineering/Project/Project4/ps2_interface.v Line: 49
