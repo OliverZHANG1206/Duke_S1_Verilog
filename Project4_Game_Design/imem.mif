@@ -1,0 +1,185 @@
+-- null
+DEPTH = 4096;
+WIDTH = 32;
+
+ADDRESS_RADIX = DEC;
+DATA_RADIX = BIN;
+
+CONTENT
+BEGIN
+    -- nop
+0000 : 00000000000000000000000000000000;
+    -- addi $1, $0, 0			# ins01 init-game status register to 0
+0001 : 00101000010000000000000000000000;
+    -- sw $1, 5000($0)			# ins02 save game status to 0
+0002 : 00111000010000000001001110001000;
+    -- addi $2, $0, 0			# ins03 init-set acceleration to 0
+0003 : 00101000100000000000000000000000;
+    -- addi $3, $0, 255		# ins04 init-set bird y to 255
+0004 : 00101000110000000000000011111111;
+    -- addi $4, $0, 0			# ins05 init-score set to 0
+0005 : 00101001000000000000000000000000;
+    -- addi $5, $0, 140		# ins06 init-set left side of the bird
+0006 : 00101001010000000000000010001100;
+    -- addi $25, $0, 350		# ins07 init-set bias pipe 350
+0007 : 00101110010000000000000101011110;
+    -- addi $28, $0, 0			# ins08 init-frame counter to 0
+0008 : 00101111000000000000000000000000;
+    -- addi $29, $0, 2			# ins09 init-frame update circle set to 60
+0009 : 00101111010000000000000000000010;
+    -- addi $27, $0, 2			# ins10 init-temp register (using for compare game status)
+0010 : 00101110110000000000000000000010;
+    -- addi $1, $0, 1			# ins11 init finished, set game status to 1
+0011 : 00101000010000000000000000000001;
+    -- sw $1, 5000($0)			# ins12 save game status
+0012 : 00111000010000000001001110001000;
+    -- sw $3, 5001($0)			# ins13 save to virtual memory for y
+0013 : 00111000110000000001001110001001;
+    -- sw $4, 5002($0)			# ins14 save score
+0014 : 00111001000000000001001110001010;
+    -- lw $30, 6001($0)		# ins15 load 6001 (keyboard interrupt)
+0015 : 01000111100000000001011101110001;
+    -- bne $1, $27, 1			# ins16 if game status is not gaming
+0016 : 00010000011101100000000000000001;
+    -- bex 38				# ins17 keyboard-gaming
+0017 : 10110000000000000000000000100110;
+    -- bex 22				# ins18 keyboard-start or restart
+0018 : 10110000000000000000000000010110;
+    -- lw $30, 6002($0)		# ins19	load 6002 (vga interrupt)
+0019 : 01000111100000000001011101110010;
+    -- bex 47				# ins20 vga update 
+0020 : 10110000000000000000000000101111;
+    -- j 15				# ins21 back to nop
+0021 : 00001000000000000000000000001111;
+    -- lw $25, 6003($0)		# ins22 load the keyboard input
+0022 : 01000110010000000001011101110011;
+    -- addi $26, $0, 3			# ins23 temp buffer set to 3
+0023 : 00101110100000000000000000000011;
+    -- bne $1, $26, 4			# ins24 if game status is not restart
+0024 : 00010000011101000000000000000100;
+    -- addi $26, $0, 255		# ins25 load a temp buffer for detecting ENTER
+0025 : 00101110100000000000000011111111;
+    -- bne $25, $26, 6			# ins26 if not ENTER pressed - return to idle
+0026 : 00010110011101000000000000000110;
+    -- sw $0, 6001($0)			# ins27 clear interrupt
+0027 : 00111000000000000001011101110001;
+    -- j 0				# ins28 back to top
+0028 : 00001000000000000000000000000000;
+    -- addi $26, $0, 87		# ins29 load a temp buffer for detecting W
+0029 : 00101110100000000000000001010111;
+    -- bne $25, $26, 1			# ins30 if not W pressed - check space is pressed
+0030 : 00010110011101000000000000000001;
+    -- j 34				# ins31 jump to geam sataus setting
+0031 : 00001000000000000000000000100010;
+    -- addi $26, $0, 32		# ins32 load a temp buffer for detecting space
+0032 : 00101110100000000000000000100000;
+    -- bne $25, $26, 2			# ins33 if not space pressed - return to idle
+0033 : 00010110011101000000000000000010;
+    -- addi $1, $0, 2			# ins34 set game status to 2
+0034 : 00101000010000000000000000000010;
+    -- sw $1, 5000($0)			# ins35 save game status to 2
+0035 : 00111000010000000001001110001000;
+    -- sw $0, 6001($0)			# ins36 clear interrupt
+0036 : 00111000000000000001011101110001;
+    -- j 15				# ins37 finish setting, back to idle
+0037 : 00001000000000000000000000001111;
+    -- lw $25, 6003($0)		# ins38 load the keyboard input
+0038 : 01000110010000000001011101110011;
+    -- addi $26, $0, 87		# ins39 load a temp buffer for detecting W
+0039 : 00101110100000000000000001010111;
+    -- bne $25, $26, 1			# ins40 if not W pressed - return to idle
+0040 : 00010110011101000000000000000001;
+    -- j 44				# ins41 jump to acceleration setting
+0041 : 00001000000000000000000000101100;
+    -- addi $26, $0, 32		# ins42 load a temp buffer for detecting space
+0042 : 00101110100000000000000000100000;
+    -- bne $25, $26, 1			# ins43 if not space pressed - return to idle
+0043 : 00010110011101000000000000000001;
+    -- addi $2, $0, 18			# ins44 set jump acceleration to 18
+0044 : 00101000100000000000000000010010;
+    -- sw $0, 6001($0)			# ins45 clear interrupt
+0045 : 00111000000000000001011101110001;
+    -- j 15				# ins46 finish setting, back to idle
+0046 : 00001000000000000000000000001111;
+    -- sw $0, 6002($0)			# ins47 clear interrupt
+0047 : 00111000000000000001011101110010;
+    -- addi $28, $28, 1		# ins48 frame counter plus 1
+0048 : 00101111001110000000000000000001;
+    -- blt $29, $28, 1			# ins49 if counter > update circle
+0049 : 00110111011110000000000000000001;
+    -- j 15				# ins50 jump back to nop, waiting
+0050 : 00001000000000000000000000001111;
+    -- bne $1, $27, 1			# ins51 if game status is not gaming
+0051 : 00010000011101100000000000000001;
+    -- j 54				# ins52 jump to frame update
+0052 : 00001000000000000000000000110110;
+    -- j 15				# ins53 back to idle, waiting
+0053 : 00001000000000000000000000001111;
+    -- addi $28, $0, 0			# ins54 clear counter
+0054 : 00101111000000000000000000000000;
+    -- addi $2, $2, -3			# ins55 acceleration decrease 3
+0055 : 00101000100001011111111111111101;
+    -- add $3, $3, $2			# ins56 update position
+0056 : 00000000110001100010000000000000;
+    -- sw $3, 5001($0) 		# ins57 save to virtual memory for bird y
+0057 : 00111000110000000001001110001001;
+    -- blt $3, $0, 12 			# ins58 if the position is less than 0 - game over
+0058 : 00110000110000000000000000001100;
+    -- lw $6, 5003($0)			# ins59 load the nearest pipe x value
+0059 : 01000001100000000001001110001011;
+    -- lw $7, 5004($0)			# ins60 load the nearest pipe y value
+0060 : 01000001110000000001001110001100;
+    -- addi $8, $6, -40		# ins61 calculate the left side of the pipe
+0061 : 00101010000011011111111111011000;
+    -- blt $5, $8, 21			# ins62 if left side pipe - 40 is not inside the bird x - do not consider
+0062 : 00110001010100000000000000010101;
+    -- addi $8, $6, 70			# ins63 calculate the right side of the pipe
+0063 : 00101010000011000000000001000110;
+    -- blt $8, $5, 13			# ins64 if the bird x is larger than the right side of the pipe - do not consider but add score if needed
+0064 : 00110010000010100000000000001101;
+    -- addi $8, $7, 130		# ins65 calculate the true y value of the pipe
+0065 : 00101010000011100000000010000010;
+    -- blt $8, $3, 4			# ins66 if the y position of the bird is larger than the y position of the pipe - game over
+0066 : 00110010000001100000000000000100;
+    -- addi $8, $8, -140		# ins67 calculate bottom pipe y value
+0067 : 00101010000100011111111101110100;
+    -- addi $9, $3, -30		# ins68 calculate the bottom bird y value
+0068 : 00101010010001111111111111100010;
+    -- blt $9, $8, 1 			# ins69 if the bottom of the bird is less than the bottom y of the pipe - game over
+0069 : 00110010010100000000000000000001;
+    -- j 15				# ins70 nothing else, the bird is going though the pipe, waiting for the next update
+0070 : 00001000000000000000000000001111;
+    -- addi $1, $0, 3			# ins71 game over
+0071 : 00101000010000000000000000000011;
+    -- addi $2, $0, 0			# ins72 set acceleration to 0
+0072 : 00101000100000000000000000000000;
+    -- addi $3, $0, 34			# ins73 set bird y to 34			
+0073 : 00101000110000000000000000100010;
+    -- sw $1, 5000($0)			# ins74 save game status to 3
+0074 : 00111000010000000001001110001000;
+    -- sw $3, 5001($0)			# ins75 save to virtual memory for bird y
+0075 : 00111000110000000001001110001001;
+    -- sw $4, 5002($0)			# ins76 save score
+0076 : 00111001000000000001001110001010;
+    -- j 15				# ins77 complete updating, return to idle
+0077 : 00001000000000000000000000001111;
+    -- lw $8, 6000($0)			# ins78 load if the pipe has been refereshed
+0078 : 01000010000000000001011101110000;
+    -- bne $0, $8, 1			# ins79 if the pipe refreshed sign is not zero
+0079 : 00010000000100000000000000000001;
+    -- j 15				# ins80 nothing need to do, back to idle
+0080 : 00001000000000000000000000001111;
+    -- addi $4, $4, 1			# ins81 get one score
+0081 : 00101001000010000000000000000001;
+    -- sw $4, 5002($0)			# ins82 save to virtual memory
+0082 : 00111001000000000001001110001010;
+    -- sw $0, 6000($0)			# ins83 clear pipe refresh interrupt
+0083 : 00111000000000000001011101110000;
+    -- j 15				# ins84 finish checking, back to idle
+0084 : 00001000000000000000000000001111;
+    -- nop
+0085 : 00000000000000000000000000000000;
+    -- nop
+0086 : 00000000000000000000000000000000;
+[0087 .. 4095] : 00000000000000000000000000000000;
+END;

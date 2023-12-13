@@ -1,0 +1,158 @@
+Restore Archived Project report for skeleton
+Mon Dec 11 19:09:36 2023
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Mon Dec 11 19:09:36 2023 ;
+; Revision Name                   ; skeleton                              ;
+; Top-level Entity Name           ; skeleton                              ;
+; Family                          ; Cyclone IV E                          ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'E:/Duke_Study/Semester_1/ECE550D-Fundemental Computer System and Engineering/Project/project4.qar' into the 'E:/Duke_Study/Semester_1/ECE550D-Fundemental Computer System and Engineering/Project/Project4/' directory
+Info: Generated report 'skeleton.restore.rpt'
+Info (23030): Evaluation of Tcl script f:/intelfpga_lite/17.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4826 megabytes
+    Info: Processing ended: Mon Dec 11 19:09:36 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
++----------------------------------+
+; Files Restored                   ;
++----------------------------------+
+; File Name                        ;
++----------------------------------+
+; qar_info.json                    ;
+; Hexadecimal_To_Seven_Segment.v   ;
+; alu.v                            ;
+; assignment_defaults.qdf          ;
+; background.bsf                   ;
+; background.mif                   ;
+; background.qip                   ;
+; background.v                     ;
+; background_bb.v                  ;
+; background_syn.v                 ;
+; clock_config.v                   ;
+; color_index.bsf                  ;
+; color_index.mif                  ;
+; color_index.qip                  ;
+; color_index.v                    ;
+; color_index_bb.v                 ;
+; color_index_syn.v                ;
+; control.v                        ;
+; dffe.v                           ;
+; dmem.bsf                         ;
+; dmem.mif                         ;
+; dmem.qip                         ;
+; dmem.v                           ;
+; dmem_bb.v                        ;
+; dmem_syn.v                       ;
+; flappy_bird.bsf                  ;
+; flappy_bird.mif                  ;
+; flappy_bird.qip                  ;
+; flappy_bird.v                    ;
+; flappy_bird_bb.v                 ;
+; flappy_bird_syn.v                ;
+; game_counter.v                   ;
+; gameover.bsf                     ;
+; gameover.mif                     ;
+; gameover.qip                     ;
+; gameover.v                       ;
+; gameover_bb.v                    ;
+; gameover_syn.v                   ;
+; imem.bsf                         ;
+; imem.mif                         ;
+; imem.qip                         ;
+; imem.v                           ;
+; imem_bb.v                        ;
+; imem_syn.v                       ;
+; lcd.sv                           ;
+; number.bsf                       ;
+; number.mif                       ;
+; number.qip                       ;
+; number.v                         ;
+; number_bb.v                      ;
+; number_syn.v                     ;
+; pipe.bsf                         ;
+; pipe.mif                         ;
+; pipe.qip                         ;
+; pipe.v                           ;
+; pipe_bb.v                        ;
+; pipe_generator.v                 ;
+; pipe_syn.v                       ;
+; processor.v                      ;
+; ps2_controller.v                 ;
+; ps2_interface.v                  ;
+; regfile.v                        ;
+; skeleton.qpf                     ;
+; skeleton.qsf                     ;
+; skeleton.v                       ;
+; skeleton_assignment_defaults.qdf ;
+; title.bsf                        ;
+; title.mif                        ;
+; title.qip                        ;
+; title.v                          ;
+; title_bb.v                       ;
+; title_syn.v                      ;
+; vga_address_generator.v          ;
+; vga_aduio_pll.bsf                ;
+; vga_aduio_pll.ppf                ;
+; vga_aduio_pll.qip                ;
+; vga_aduio_pll.v                  ;
+; vga_aduio_pll_bb.v               ;
+; vga_aduio_pll_syn.v              ;
+; vga_controller.v                 ;
+; vga_image_mask.v                 ;
+; vga_reset.v                      ;
+; vga_video_sync_generator.v       ;
+; virtual_mem.v                    ;
++----------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+
